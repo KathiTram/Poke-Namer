@@ -1,0 +1,34 @@
+body {
+	background-color: darkgray;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+img {
+	max-height: 100px;
+	max-width: 100px;
+}
+
+button {
+	padding: 5px;
+	margin: 5px;
+}
+
+.scores {
+	display: flex;
+	justify-content: space-between;
+}
+
+.streakcontainer,
+.highscorecontainer {
+	padding: 10px;
+	margin: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#continuebtn {
+	display: none;
+}
