@@ -1,4 +1,5 @@
 pokeId = Math.floor(Math.random() * 905) + 1;
+pokeIdsUsed = [];
 score = 0;
 highscoreCount = 0;
 
@@ -29,10 +30,14 @@ function getPokemonImage(id) {
 
 async function compareNames() {
 	let pokemonName = await getRandomPokemon(pokeId);
+	
+	// Removes extra name information from API
 	if (pokemonName.indexOf("-") > -1) {
 		pokeArray = pokemonName.split("-");
 		pokemonName = pokeArray[0];
 	}
+	
+	// Compares user guess to randomly generated pokemon name
 	let userGuess = document.getElementById("userGuess").value;
 	if (userGuess.toLowerCase() == pokemonName.toLowerCase()) {
 		isGuessRight.textContent = "You guessed correctly!";
@@ -44,13 +49,17 @@ async function compareNames() {
 		score = 0;
 		guessStreak.textContent = score;
 	}
+		
 	continueButton.style.display = "block"
 }
 
 getPokemonImage(pokeId);
 
+// When continue button gets pressed, generate new random pokemon
 function continueBtnPressed() {
 	pokeId = Math.floor(Math.random() * 905) + 1;
+	isGuessRight.textContent = "";
+	userInput.value = "";
 	getPokemonImage(pokeId);
 	getRandomPokemon(pokeId);
 }
